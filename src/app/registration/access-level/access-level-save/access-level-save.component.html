@@ -1,0 +1,100 @@
+<div class="box box-danger">
+    <app-box-header-content [title]="!accessLevel.id ? 'Novo Nível de Acesso': 'Editar Nível de Acesso'"
+                            [smallTitle]="'Nível de Acesso '"></app-box-header-content>
+    <div class="box-body">
+
+        <div class="btn-group">
+            <a href="javascript:void(0)" class="btn bg-purple" routerLink="/access-level/new"> <i
+                    class="fa fa-fw fa-file-o"></i> Novo Nível de Acesso </a>
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat"
+               [routerLink]="['/access-level', accessLevel.id, 'view']" *ngIf="accessLevel.id"> <i
+                    class="fa fa-fw fa-pencil"></i> Visualizar </a>
+            <a href="javascript:void(0)" class="btn bg-navy" routerLink="/access-level"> <i
+                    class="fa fa-fw fa-undo"></i> Voltar </a>
+        </div>
+        <br>
+        <br>
+
+        <div class="row">
+            <form (submit)="saveOrEdit()">
+
+                <app-input [name]="'name'" [label]="'Nome'" [placeholder]="'Informe o nome '"
+                           [(ngModel)]="accessLevel.name" [value]="accessLevel.name" ngDefaultControl></app-input>
+
+                <app-select [name]="'mod_financial'" [label]="'Módulo Financeiro'" [(ngModel)]="accessLevel.mod_financial" ngDefaultControl>
+                    <option *ngFor="let optionSel of arrayModulesStatus" [value]="optionSel.value"
+                            [selected]="optionSel.value === accessLevel.mod_financial">
+                        {{optionSel.label}}
+                    </option>
+                </app-select>
+
+                <app-select [name]="'mod_client'" [label]="'Módulo Cliente'" [(ngModel)]="accessLevel.mod_client" ngDefaultControl>
+                    <option *ngFor="let optionSel of arrayModulesStatus" [value]="optionSel.value"
+                            [selected]="optionSel.value === accessLevel.mod_client">
+                        {{optionSel.label}}
+                    </option>
+                </app-select>
+
+                <app-select [name]="'mod_user'" [label]="'Módulo Usuário'" [(ngModel)]="accessLevel.mod_user" ngDefaultControl>
+                    <option *ngFor="let optionSel of arrayModulesStatus" [value]="optionSel.value"
+                            [selected]="optionSel.value === accessLevel.mod_user">
+                        {{optionSel.label}}
+                    </option>
+                </app-select>
+
+                <app-select [name]="'mod_product'" [label]="'Módulo Produto'" [(ngModel)]="accessLevel.mod_product" ngDefaultControl>
+                    <option *ngFor="let optionSel of arrayModulesStatus" [value]="optionSel.value"
+                            [selected]="optionSel.value === accessLevel.mod_product">
+                        {{optionSel.label}}
+                    </option>
+                </app-select>
+
+                <app-select [name]="'mod_service'" [label]="'Módulo Serviço'" [(ngModel)]="accessLevel.mod_service" ngDefaultControl>
+                    <option *ngFor="let optionSel of arrayModulesStatus" [value]="optionSel.value"
+                            [selected]="optionSel.value === accessLevel.mod_service">
+                        {{optionSel.label}}
+                    </option>
+                </app-select>
+
+                <app-select [name]="'mod_plan'" [label]="'Módulo Plano'" [(ngModel)]="accessLevel.mod_plan" ngDefaultControl>
+                    <option *ngFor="let optionSel of arrayModulesStatus" [value]="optionSel.value"
+                            [selected]="optionSel.value === accessLevel.mod_plan">
+                        {{optionSel.label}}
+                    </option>
+                </app-select>
+
+                <app-select [name]="'mod_report'" [label]="'Módulo Relatório'" [(ngModel)]="accessLevel.mod_report" ngDefaultControl>
+                    <option *ngFor="let optionSel of arrayModulesStatus" [value]="optionSel.value"
+                            [selected]="optionSel.value === accessLevel.mod_report">
+                        {{optionSel.label}}
+                    </option>
+                </app-select>
+
+                <app-select [name]="'mod_config'" [label]="'Módulo Configuração'" [(ngModel)]="accessLevel.mod_config" ngDefaultControl>
+                    <option *ngFor="let optionSel of arrayModulesStatus" [value]="optionSel.value"
+                            [selected]="optionSel.value === accessLevel.mod_config">
+                        {{optionSel.label}}
+                    </option>
+                </app-select>
+
+                <app-select [name]="'access_type'" [label]="'Tipo de Acesso'" [(ngModel)]="accessLevel.access_type" ngDefaultControl>
+                    <option *ngFor="let optionSel of arrayModulesStatus" [value]="optionSel.value"
+                            [selected]="optionSel.value === accessLevel.access_type">
+                        {{optionSel.label}}
+                    </option>
+                </app-select>
+
+                <app-select [name]="'status'" [label]="'Status'" [(ngModel)]="accessLevel.status" ngDefaultControl>
+                    <option *ngFor="let optionSel of arrayModulesStatus" [value]="optionSel.value"
+                            [selected]="optionSel.value === accessLevel.status">
+                        {{optionSel.label}}
+                    </option>
+                </app-select>
+
+
+                <app-button-save-edit
+                        [label]="!accessLevel.id ? 'Salvar nível de acesso' : 'Editar nível de acesso'"></app-button-save-edit>
+            </form>
+        </div>
+    </div>
+</div>

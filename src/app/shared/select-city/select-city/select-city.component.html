@@ -1,0 +1,9 @@
+<div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+    <div class="form-group">
+        <label for="{{name}}" class="control-label">{{label}}</label>
+        <select name="{{name}}" id="{{name}}" class="form-control select2">
+            <option value="{{city.id}}" *ngFor="let city of cities" [selected]="city.id == valueSelect" > {{city.city}} - {{city.uf}} </option>
+        </select>
+    </div>
+</div>
+

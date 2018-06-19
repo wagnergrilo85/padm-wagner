@@ -1,0 +1,112 @@
+<div class="box box-info">
+
+    <app-box-header-content [title]="'Clientes'" [smallTitle]="'listagem de dados'"></app-box-header-content>
+
+    <div class="box-body">
+
+        <div class="btn-group">
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat" routerLink="/client/new"> <i
+                    class="fa fa-fw fa-file-o"></i> Novo </a>
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat"
+               [routerLink]="['/client', client.id, 'edit']" *ngIf="client.id"> <i
+                    class="fa fa-fw fa-pencil"></i> Editar </a>
+            <a href="javascript:void(0)" class="btn bg-navy btn-flat" routerLink="/client"> <i
+                    class="fa fa-fw fa-undo"></i> Voltar </a>
+        </div>
+
+        <br>
+        <br>
+
+        <app-box-report></app-box-report>
+
+        <table class="table table-bordered table-striped dataTable">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{client.id}}</td>
+            </tr>
+            <tr>
+                <th>Cliente</th>
+                <td>{{client.name}}</td>
+            </tr>
+            <tr>
+                <th>Tipo do cliente</th>
+                <td>{{client.document_type}}</td>
+            </tr>
+            <tr>
+                <th>CPF/CNPJ</th>
+                <td>{{client.document}}</td>
+            </tr>
+            <tr>
+                <th>Endereço</th>
+                <td>{{client.address}} - {{client.number}}</td>
+            </tr>
+            <tr>
+                <th>Complemento</th>
+                <td>{{client.complement}}</td>
+            </tr>
+            <tr>
+                <th>Cidade</th>
+                <td>{{client.city_id}}</td>
+            </tr>
+            <tr>
+                <th>Estado</th>
+                <td>{{client.state_id}}</td>
+            </tr>
+            <tr>
+                <th>CEP</th>
+                <td>{{client.zip_code}}</td>
+            </tr>
+            <tr>
+                <th>CEP</th>
+                <td>{{client.zip_code}}</td>
+            </tr>
+            <tr>
+                <th>E-mail</th>
+                <td>{{client.email}}</td>
+            </tr>
+            <tr>
+                <th>Site</th>
+                <td>{{client.site}}</td>
+            </tr>
+            <tr>
+                <th>Telefone</th>
+                <td>{{client.telephone}}</td>
+            </tr>
+            <tr>
+                <th>Celular</th>
+                <td>{{client.cellphone}}</td>
+            </tr>
+            <tr>
+                <th>Fax</th>
+                <td>{{client.fax}}</td>
+            </tr>
+            <tr>
+                <th>Grupo</th>
+                <td>{{client.group_id}}</td>
+            </tr>
+            <tr>
+                <th>Categoria</th>
+                <td>{{client.category_client}}</td>
+            </tr>
+            <tr>
+                <th>Ramo de atividade</th>
+                <td>{{client.branch_activity}}</td>
+            </tr>
+            <tr>
+                <th>Data de cadastro</th>
+                <td>{{client.created_at}}</td>
+            </tr>
+            <tr>
+                <th>Última atualização</th>
+                <td>{{client.updated_at}}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{client.status == 1 ? 'Ativado' : 'Desativado'}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

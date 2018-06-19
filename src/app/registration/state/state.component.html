@@ -1,0 +1,47 @@
+<div class="box">
+
+    <app-box-header-content [title]="'Estados'" [smallTitle]="'listagem'"></app-box-header-content>
+
+    <div class="box-body">
+
+        <a href="javascript:void(0)" class="btn bg-purple btn-flat disabled" routerLink="/state/new">
+            <i class="fa fa-fw fa-file-o"></i> Novo Estado
+        </a>
+
+        <br>
+        <br>
+
+        <div class="row" *ngIf="messageAlert">
+            <app-message [color]="colorAlert" [closeAlert]="true" [timeout]="40000">{{messageAlert}}</app-message>
+        </div>
+
+        <table datatable [dtOptions]="dtOptions" class="table table-bordered table-striped dataTable table-solteti">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Estado</th>
+                <th>UF</th>
+                <th class="th-action-solteti">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let state of states">
+
+                <td>{{ state.id }}</td>
+                <td>{{ state.state }}</td>
+                <td>{{ state.uf }}</td>
+
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a href="javascript:void(0)" class="btn bg-navy  btn-xs disabled"> <i class="fa fa-fw fa-eye"></i> Ver </a>
+                        <a href="javascript:void(0)" class="btn bg-navy  btn-xs disabled">   <i class="fa fa-fw fa-pencil"></i> Editar </a>
+                        <a href="javascript:void(0)" class="btn bg-navy  btn-xs disabled">  <i class="fa fa-fw fa-trash-o"></i> Apagar</a>
+                    </div>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

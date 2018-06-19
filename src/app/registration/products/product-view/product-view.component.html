@@ -1,0 +1,44 @@
+<div class="box box-info">
+
+    <app-box-header-content [title]="'Produtos da empresa'" [smallTitle]="'listagem de dados'"></app-box-header-content>
+
+    <div class="box-body">
+
+        <div class="btn-group">
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat" routerLink="/product/new"> <i
+                    class="fa fa-fw fa-file-o"></i> Novo </a>
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat"
+               [routerLink]="['/product', product.id, 'edit']" *ngIf="product.id"> <i
+                    class="fa fa-fw fa-pencil"></i> Editar </a>
+            <a href="javascript:void(0)" class="btn bg-navy btn-flat" routerLink="/product"> <i
+                    class="fa fa-fw fa-undo"></i> Voltar </a>
+        </div>
+
+        <br>
+        <br>
+
+        <app-box-report></app-box-report>
+
+        <table class="table table-bordered table-striped dataTable">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{product.id}}</td>
+            </tr>
+            <tr>
+                <th>Produto</th>
+                <td>{{product.name}}</td>
+            </tr>
+            <tr>
+                <th>Descrição</th>
+                <td>{{product.description}}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{product.status == 1 ? 'Ativado' : 'Desativado'}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

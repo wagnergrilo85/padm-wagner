@@ -1,0 +1,80 @@
+<div class="box box-info">
+
+    <app-box-header-content [title]="'Planos e preços'" [smallTitle]="'listagem de dados'"></app-box-header-content>
+
+    <div class="box-body">
+
+        <div class="btn-group">
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat" routerLink="/plan/new"> <i
+                    class="fa fa-fw fa-file-o"></i> Novo </a>
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat"
+               [routerLink]="['/plan', plan.id, 'edit']" *ngIf="plan.id"> <i
+                    class="fa fa-fw fa-pencil"></i> Editar </a>
+            <a href="javascript:void(0)" class="btn bg-navy btn-flat" routerLink="/plan"> <i
+                    class="fa fa-fw fa-undo"></i> Voltar </a>
+        </div>
+
+        <br>
+        <br>
+
+        <app-box-report></app-box-report>
+
+        <table class="table table-bordered table-striped dataTable">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{plan.id}}</td>
+            </tr>
+            <tr>
+                <th>Plano</th>
+                <td>{{plan.name}}</td>
+            </tr>
+            <tr>
+                <th>Descrição</th>
+                <td>{{plan.description}}</td>
+            </tr>
+            <tr>
+                <th>Produto</th>
+                <td>{{plan.product_id}}</td>
+            </tr>
+            <tr>
+                <th>Preço mensal</th>
+                <td>{{plan.monthly_price}}</td>
+            </tr>
+            <tr>
+                <th>Preço anual</th>
+                <td>{{plan.annual_price}}</td>
+            </tr>
+            <tr>
+                <th>Preço trimestral</th>
+                <td>{{plan.quarterly_price}}</td>
+            </tr>
+            <tr>
+                <th>Preço semestral</th>
+                <td>{{plan.semi_annual_price}}</td>
+            </tr>
+            <tr>
+                <th>Período escolhido</th>
+                <td>{{plan.select_period}}</td>
+            </tr>
+            <tr>
+                <th>Dias due_date ??? </th>
+                <td>{{plan.due_date}}</td>
+            </tr>
+            <tr>
+                <th>Data da contratação</th>
+                <td>{{plan.date_hiring}}</td>
+            </tr>
+            <tr>
+                <th>Dias para suspenção</th>
+                <td>{{plan.days_of_suspension}}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{plan.status == 1 ? 'Ativado' : 'Desativado'}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

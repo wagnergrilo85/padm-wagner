@@ -1,0 +1,42 @@
+<div class="box box-info">
+    <app-box-header-content [title]="'Nível de acesso'"
+                            [smallTitle]="'listagem de dados'"></app-box-header-content>
+    <div class="box-body">
+
+        <div class="btn-group">
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat" routerLink="/access-level/new"> <i
+                    class="fa fa-fw fa-file-o"></i> Novo </a>
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat"
+               [routerLink]="['/access-level', accessLevel.id, 'edit']" *ngIf="accessLevel.id"> <i
+                    class="fa fa-fw fa-pencil"></i> Editar </a>
+            <a href="javascript:void(0)" class="btn bg-navy btn-flat" routerLink="/access-level"> <i
+                    class="fa fa-fw fa-undo"></i> Voltar </a>
+        </div>
+        <br>
+        <br>
+
+        <app-box-report></app-box-report>
+
+        <table class="table table-bordered table-striped dataTable">
+            <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{accessLevel.id}}</td>
+            </tr>
+            <tr>
+                <th>Grupo</th>
+                <td>{{accessLevel.name}}</td>
+            </tr>
+            <tr>
+                <th>Classificação</th>
+                <td>{{accessLevel.classification}}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{accessLevel.status == 1 ? 'Ativado' : 'Desativado'}}</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

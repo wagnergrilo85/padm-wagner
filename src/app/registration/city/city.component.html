@@ -1,0 +1,56 @@
+<div class="box">
+
+    <app-box-header-content [title]="'Cidade'" [smallTitle]="'listagem'"></app-box-header-content>
+
+    <div class="box-body">
+
+        <div class="pull-left">
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat disabled" routerLink="/city/new"> <i class="fa fa-fw fa-file-o"></i> Nova Cidade </a>
+        </div>
+
+        <div class="btn-group pull-right">
+            <a href="javascript:void(0)" class="btn btn-default" (click)="report_pdf()"> <i class="fa fa-fw fa-file-pdf-o"></i> Relatório PDF </a>
+            <a href="javascript:void(0)" class="btn btn-default disabled"> <i class="fa fa-fw fa-file-excel-o"></i> Relatório Excel </a>
+        </div>
+
+        <div class="clearfix"></div>
+        <br>
+        <br>
+
+        <div class="row" *ngIf="messageAlert">
+            <app-message [color]="colorAlert" [closeAlert]="true" [timeout]="40000">{{messageAlert}}</app-message>
+        </div>
+
+        <table datatable [dtOptions]="dtOptions" class="table table-bordered table-striped dataTable table-solteti">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Código cidade</th>
+                <th>Cidade</th>
+                <th>UF</th>
+                <th class="th-action-solteti">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let city of cities">
+
+                <td>{{ city.id }}</td>
+                <td>{{ city.code }}</td>
+                <td>{{ city.city }}</td>
+                <td>{{ city.uf }}</td>
+
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a href="javascript:void(0)" class="btn bg-navy  btn-xs disabled"> <i class="fa fa-fw fa-eye"></i> Ver </a>
+                        <a href="javascript:void(0)" class="btn bg-navy  btn-xs disabled"> <i class="fa fa-fw fa-pencil"></i> Editar </a>
+                        <a href="javascript:void(0)" class="btn bg-navy  btn-xs disabled"> <i class="fa fa-fw fa-trash-o"></i> Apagar</a>
+                    </div>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+

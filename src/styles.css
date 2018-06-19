@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+
+.table-solteti{
+    width: 100% !important;
+}
+
+.th-action-solteti{
+    width: 190px !important;
+    text-align: center;
+}

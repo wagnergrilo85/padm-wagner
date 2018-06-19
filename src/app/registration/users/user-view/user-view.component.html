@@ -1,0 +1,48 @@
+<div class="box box-info">
+
+    <app-box-header-content [title]="'Usuários do sistema'" [smallTitle]="'listagem de dados'"></app-box-header-content>
+
+    <div class="box-body">
+
+        <div class="btn-group">
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat" routerLink="/user/new"> <i
+                    class="fa fa-fw fa-file-o"></i> Novo </a>
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat"
+               [routerLink]="['/user', user.id, 'edit']" *ngIf="user.id"> <i
+                    class="fa fa-fw fa-pencil"></i> Editar </a>
+            <a href="javascript:void(0)" class="btn bg-navy btn-flat" routerLink="/user"> <i
+                    class="fa fa-fw fa-undo"></i> Voltar </a>
+        </div>
+
+        <br>
+        <br>
+
+        <app-box-report></app-box-report>
+
+        <table class="table table-bordered table-striped dataTable">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{user.id}}</td>
+                </tr>
+                <tr>
+                    <th>Usuário</th>
+                    <td>{{user.name}}</td>
+                </tr>
+                <tr>
+                    <th>E-mail</th>
+                    <td>{{user.email}}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>{{user.status == 1 ? 'Ativado' : 'Desativado'}}</td>
+                </tr>
+                <tr>
+                    <th>Imagem</th>
+                    <td>{{user.image}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

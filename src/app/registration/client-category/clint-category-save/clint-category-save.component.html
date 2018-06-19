@@ -1,0 +1,29 @@
+<div class="box box-danger">
+    <app-box-header-content [title]="!clientCategory.id ? 'Nova Categoria': 'Editar Categoria'" [smallTitle]="'categoria de clientes'"></app-box-header-content>
+    <div class="box-body">
+
+        <div class="btn-group">
+            <a href="javascript:void(0)" class="btn bg-purple" routerLink="/client-category/new"> <i class="fa fa-fw fa-file-o"></i> Nova categoria </a>
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat" [routerLink]="['/client-category', clientCategory.id, 'view']" *ngIf="clientCategory.id"> <i class="fa fa-fw fa-pencil"></i> Visualizar </a>
+            <a href="javascript:void(0)" class="btn bg-navy" routerLink="/client-category"> <i class="fa fa-fw fa-undo"></i> Voltar </a>
+        </div>
+        <br>
+        <br>
+
+        <div class="row">
+            <form (submit)="saveOrEdit()">
+
+                <app-input [name]="'name'" [label]="'Categoria'" [placeholder]="'Informe a categoria'" [(ngModel)]="clientCategory.name" [value]="clientCategory.name" ngDefaultControl></app-input>
+                <app-input [name]="'classification'" [label]="'Classificação'" [placeholder]="'Informe a Classificação'" [(ngModel)]="clientCategory.classification" [value]="clientCategory.classification ? clientCategory.classification : ''" ngDefaultControl></app-input>
+                <app-select [name]="'status'" [label]="'Status'" [(ngModel)]="clientCategory.status" ngDefaultControl>
+                    <option *ngFor="let optionSel of arraySelectStatus" [value]="optionSel.value"
+                            [selected]="optionSel.value === clientCategory.status">
+                        {{optionSel.label}}
+                    </option>
+                </app-select>
+
+                <app-button-save-edit [label]="!clientCategory.id ? 'Salvar categoria' : 'Editar categoria'"></app-button-save-edit>
+            </form>
+        </div>
+    </div>
+</div>

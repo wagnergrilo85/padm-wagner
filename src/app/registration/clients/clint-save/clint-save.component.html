@@ -1,0 +1,52 @@
+<div class="box box-danger">
+    <app-box-header-content [title]="!client.id ? 'Novo Cliente': 'Editar Cliente'"
+                            [smallTitle]="'Cliente '"></app-box-header-content>
+    <div class="box-body">
+
+        <div class="btn-group">
+            <a href="javascript:void(0)" class="btn bg-purple" routerLink="/client/new"> <i
+                    class="fa fa-fw fa-file-o"></i> Novo Cliente </a>
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat"
+               [routerLink]="['/client', client.id, 'view']" *ngIf="client.id"> <i
+                    class="fa fa-fw fa-pencil"></i> Visualizar </a>
+            <a href="javascript:void(0)" class="btn bg-navy" routerLink="/client"> <i
+                    class="fa fa-fw fa-undo"></i> Voltar </a>
+        </div>
+        <br>
+        <br>
+
+        <div class="row">
+            <form (submit)="saveOrEdit()">
+
+                <app-input [name]="'name'" [label]="'Nome do cliente'" [placeholder]="'Informe o nome '"
+                           [(ngModel)]="client.name" [value]="client.name" ngDefaultControl></app-input>
+
+                <app-select [name]="'document_type'" [label]="'Tipo do cliente'"
+                            [(ngModel)]="client.document_type" ngDefaultControl>
+                    <option *ngFor="let optionSel of arrayDocumentType" [value]="optionSel.value"
+                            [selected]="optionSel.value === client.document_type">
+                        {{optionSel.label}}
+                    </option>
+                </app-select>
+
+                <app-input [name]="'document'" [label]="'Número do documento'" [placeholder]="'Informe o documento '"
+                           [(ngModel)]="client.document" [value]="client.document" ngDefaultControl></app-input>
+
+                <app-input [name]="'address'" [label]="'Endereço'" [placeholder]="'Informe o endereço '"
+                           [(ngModel)]="client.address" [value]="client.address" ngDefaultControl></app-input>
+
+
+                <app-select [name]="'status'" [label]="'Status'" [(ngModel)]="client.status" ngDefaultControl>
+                    <option *ngFor="let optionSel of arraySelectStatus" [value]="optionSel.value"
+                            [selected]="optionSel.value === client.status">
+                        {{optionSel.label}}
+                    </option>
+                </app-select>
+
+                <app-select-city [name]="'city'" [label]="'Cidade'" [(ngModel)]="client.city_id" [valor]="'2939'" ></app-select-city>
+
+                <app-button-save-edit [label]="!client.id ? 'Salvar nível de acesso' : 'Editar nível de acesso'"></app-button-save-edit>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+<div class="box box-danger">
+    <app-box-header-content [title]="!clientGroup.id ? 'Novo Grupo de Cliente': 'Editar Grupo de Cliente'"
+                            [smallTitle]="'grupo de cliente'"></app-box-header-content>
+    <div class="box-body">
+
+        <div class="btn-group">
+            <a href="javascript:void(0)" class="btn bg-purple" routerLink="/client-group/new"> <i
+                    class="fa fa-fw fa-file-o"></i> Novo Grupo de Cliente </a>
+            <a href="javascript:void(0)" class="btn bg-purple btn-flat"
+               [routerLink]="['/client-group', clientGroup.id, 'view']" *ngIf="clientGroup.id"> <i
+                    class="fa fa-fw fa-pencil"></i> Visualizar </a>
+            <a href="javascript:void(0)" class="btn bg-navy" routerLink="/client-group"> <i
+                    class="fa fa-fw fa-undo"></i> Voltar </a>
+        </div>
+        <br>
+        <br>
+
+        <div class="row">
+            <form (submit)="saveOrEdit()">
+
+                <app-input #elementDom [name]="'name'" [label]="'Grupo de Cliente'" [placeholder]="'Informe o grupo de cliente'"
+                           [(ngModel)]="clientGroup.name" [value]="clientGroup.name"  ngDefaultControl></app-input>
+
+                <app-input [name]="'classification'" [label]="'Classificação'" [placeholder]="'Informe a Classificação'"
+                           [(ngModel)]="clientGroup.classification"
+                           [value]="clientGroup.classification ? clientGroup.classification : ''"
+                           ngDefaultControl></app-input>
+
+                <app-select [name]="'status'" [label]="'Status'" [(ngModel)]="clientGroup.status" ngDefaultControl>
+                    <option *ngFor="let optionSel of arraySelectStatus" [value]="optionSel.value"
+                            [selected]="optionSel.value === clientGroup.status">
+                        {{optionSel.label}}
+                    </option>
+                </app-select>
+
+                <app-button-save-edit
+                        [label]="!clientGroup.id ? 'Salvar Grupo de Cliente' : 'Editar Grupo de Cliente'"></app-button-save-edit>
+            </form>
+        </div>
+    </div>
+</div>
+
+{{clientGroup.name}}
+<br>
+{{elementDom.className}}

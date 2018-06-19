@@ -1,0 +1,70 @@
+<div class="box">
+
+    <app-box-header-content [title]="'Grupo de clientes'" [smallTitle]="'listagem'"></app-box-header-content>
+
+    <div class="box-body">
+
+        <a href="javascript:void(0)" class="btn bg-purple btn-flat" routerLink="/client-group/new"> <i
+                class="fa fa-fw fa-file-o"></i> Novo Grupo </a>
+        <br>
+        <br>
+
+        <div class="row" *ngIf="messageAlert">
+            <app-message [color]="colorAlert" [closeAlert]="true" [timeout]="40000">{{messageAlert}}</app-message>
+        </div>
+
+        <table datatable [dtOptions]="dtOptions" class="table table-bordered table-striped table-hover table-solteti">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Classificação</th>
+                <th>Data de cadastro</th>
+                <th>Status</th>
+                <th class="th-action-solteti">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let clientGroup of clientGroups">
+
+                <td>{{ clientGroup.id }}</td>
+                <td>{{ clientGroup.name }}</td>
+                <td>{{ clientGroup.classification }}</td>
+                <td>{{ clientGroup.created_at.date | date: 'dd/MM/yyyy' }}</td>
+                <td>{{ clientGroup.status == 1 ? 'Ativado' : 'Desativado' }}</td>
+
+                <td class="text-center">
+                    <div class="btn-group">
+                        <a href="javascript:void(0)" class="btn bg-navy  btn-xs"
+                           [routerLink]="['/client-group', clientGroup.id, 'view']"> <i
+                                class="fa fa-fw fa-eye"></i> Ver </a>
+                        <a href="javascript:void(0)" class="btn bg-navy  btn-xs"
+                           [routerLink]="['/client-group', clientGroup.id, 'edit']"> <i
+                                class="fa fa-fw fa-pencil"></i> Editar </a>
+                        <a href="javascript:void(0)" class="btn bg-navy  btn-xs" (click)="openModal(clientGroup)"> <i
+                                class="fa fa-fw fa-trash-o"></i> Apagar</a>
+                    </div>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+<app-modal>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Mensagem de confirmação</h4>
+    </div>
+    <div class="modal-body" *ngIf="clientGroupModelToDelete">
+        <p>Deseja excluir esta categoria <strong>{{clientGroupModelToDelete.name}}</strong> ?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-danger" (click)="destroy()">Exluir</button>
+    </div>
+</app-modal>

@@ -1,0 +1,69 @@
+<div class="box">
+
+    <app-box-header-content [title]="'Nível de Acesso'" [smallTitle]="'listagem'"></app-box-header-content>
+
+    <div class="box-body">
+
+        <a href="javascript:void(0)" class="btn bg-purple btn-flat" routerLink="/access-level/new"> <i
+                class="fa fa-fw fa-file-o"></i> Novo Nível de Acesso </a>
+        <br>
+        <br>
+
+        <div class="row" *ngIf="messageAlert">
+            <app-message [color]="colorAlert" [closeAlert]="true" [timeout]="40000">{{messageAlert}}</app-message>
+        </div>
+
+        <table datatable [dtOptions]="dtOptions" class="table table-bordered table-striped table-solteti">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Tipo de Acesso</th>
+                <th>Data de cadastro</th>
+                <th>Status</th>
+                <th class="th-action-solteti">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let accessLevel of accessLeves">
+                <td>{{ accessLevel.id }}</td>
+                <td>{{ accessLevel.name }}</td>
+                <td>{{ accessLevel.access_type }}</td>
+                <td>{{ accessLevel.created_at }}</td>
+                <td>{{ accessLevel.status == 1 ? 'Ativado' : 'Desativado' }}</td>
+
+                <td>
+                    <div class="btn-group">
+                        <a href="javascript:void(0)" class="btn bg-navy  btn-xs"
+                           [routerLink]="['/access-level', accessLevel.id, 'view']"> <i
+                                class="fa fa-fw fa-eye"></i> Ver </a>
+                        <a href="javascript:void(0)" class="btn bg-navy  btn-xs"
+                           [routerLink]="['/access-level', accessLevel.id, 'edit']"> <i
+                                class="fa fa-fw fa-pencil"></i> Editar </a>
+                        <a href="javascript:void(0)" class="btn bg-navy  btn-xs" (click)="openModal(accessLevel)"> <i
+                                class="fa fa-fw fa-trash-o"></i> Apagar</a>
+                    </div>
+                </td>
+
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+<app-modal>
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Mensagem de confirmação</h4>
+    </div>
+    <div class="modal-body" *ngIf="accessLevelModelToDelete">
+        <p>Deseja excluir este nível de acesso <strong>{{accessLevelModelToDelete.name}}</strong> ?</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-danger" (click)="destroy()">Exluir</button>
+    </div>
+</app-modal>
